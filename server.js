@@ -11,7 +11,7 @@ const port = 4000;
 app.use(express.json());
 app.use(cors());
 app.use("/api/food", foodrouter);
-app.use("/image/uploads", express.static("uploads"));
+app.use("/image", express.static("uploads"));
 
 // DB Connection
 connecDB();
