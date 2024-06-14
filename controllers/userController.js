@@ -5,7 +5,23 @@ import usermodel from "../models/userModel.js";
 
 // login user
 const loginuser = async (req, res) => {
-  console.log("login");
+  const { email, password } = req.body;
+  try {
+    const user = await usermodel.findOne({ email });
+    if (!user) {
+      return res.json({ success: false, message: "User Not Found!" });
+    }
+    const ismatch = await bcrypt.compare(password, user.password);
+    if (!ismatch) {
+      return res.json({ success: false, message: "Invalid Credentials" });
+    }
+    const token = create_jwt_token(user._id);
+    // console.log(token);
+    res.json({ success: true, token: token });
+  } catch (error) {
+    console.log(error);
+    res.json({ success: false, message: "Error!" });
+  }
 };
 
 const create_jwt_token = (id) => {

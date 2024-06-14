@@ -14,7 +14,7 @@ app.use(express.json());
 app.use(cors());
 app.use("/api/food", foodrouter);
 app.use("/image", express.static("uploads"));
-app.use("/api/login", userroute);
+app.use("/api/user", userroute);
 
 // DB Connection
 connecDB();
