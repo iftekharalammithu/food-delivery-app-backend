@@ -2,6 +2,8 @@ import express from "express";
 import cors from "cors";
 import { connecDB } from "./config/db.js";
 import foodrouter from "./routes/foodroute.js";
+import userroute from "./routes/userRoute.js";
+import "dotenv/config";
 
 // app config
 const app = express();
@@ -12,6 +14,7 @@ app.use(express.json());
 app.use(cors());
 app.use("/api/food", foodrouter);
 app.use("/image", express.static("uploads"));
+app.use("/api/login", userroute);
 
 // DB Connection
 connecDB();
