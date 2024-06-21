@@ -75,4 +75,26 @@ const userorder = async (req, res) => {
   }
 };
 
-export { placeorder, verifyorder, userorder };
+const listorder = async (req, res) => {
+  try {
+    const orders = await ordermodel.find({});
+    res.json({ success: true, data: orders });
+  } catch (error) {
+    console.log(error);
+    res.json({ success: false, message: "error" });
+  }
+};
+
+const updatestatus = async (req, res) => {
+  try {
+    await ordermodel.findByIdAndUpdate(req.body.orderid, {
+      status: req.body.status,
+    });
+    res.json({ success: true, message: "Status Update" });
+  } catch (error) {
+    console.log(error);
+    res.json({ success: false, message: "Error" });
+  }
+};
+
+export { updatestatus, listorder, placeorder, verifyorder, userorder };
