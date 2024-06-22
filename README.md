@@ -21,7 +21,7 @@ This is a backend application for a food delivery service, built using [insert t
 
 ### Installation
 
-1. Clone the repository: `https://github.com/iftekharalammithu/food-delivery-app-backend.git`
+1. Clone the repository: `git clone https://github.com/iftekharalammithu/food-delivery-app-backend.git`
 2. Install dependencies: `npm install` or `yarn install`
 3. Start the application: `npm start` or `yarn start`
 
